@@ -22,13 +22,6 @@ class App(tb.Window):
     self.connectToPortFrame = SerialConnectFrame(self.windowFrame, next_func=self.startMainApp)
     self.connectToPortFrame.pack(side="left", expand=True, fill="both", pady=(0,10))
     #####################################################################################
-
-  # def startMainApp(self):
-  #   self.delete_pages()
-  #   self.mainAppFrame = tb.Frame(self.windowFrame)
-  #   self.label = tb.Label(self.mainAppFrame, text="MENU", font=('Monospace',20, 'bold') ,bootstyle="secondary")
-  #   self.label.pack(side="top", fill="x", padx=(40,0), pady=(0,25))
-  #   self.mainAppFrame.pack(side="left", expand=True, fill="both", pady=(0,10))
   
   def startMainApp(self):
     self.delete_pages()
@@ -38,8 +31,6 @@ class App(tb.Window):
   def delete_pages(self):
     for frame in self.windowFrame.winfo_children():
       frame.destroy()
-
-
 
 
 
