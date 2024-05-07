@@ -35,5 +35,5 @@ class App(tb.Window):
 
 
 if __name__ == "__main__":
-  g.app = App(title="My Test GUI App", size=(900,650))
+  g.app = App(title="SIC_MPU9250 SETUP APPLICATION", size=(900,650))
   g.app.mainloop()

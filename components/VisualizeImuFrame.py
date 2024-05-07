@@ -32,16 +32,16 @@ class VisualizeImuFrame(tb.Frame):
     #create widgets to be added to the textFame
     buttonStyle = tb.Style()
     buttonStyleName = 'primary.TButton'
-    buttonStyle.configure(buttonStyleName, font=('Monospace',10, 'bold'))
+    buttonStyle.configure(buttonStyleName, font=('Monospace',10,'bold'))
 
     self.button1 = tb.Button(self.displayFrame, text="VIZUALIZE IMU", style=buttonStyleName,
-                             command=self.start_imu_viz)
+                             padding=20, command=self.start_imu_viz)
 
     #add created widgets to displayFrame
-    self.button1.pack(side='left', fill='both', padx=(20,10))
+    self.button1.pack(side='left', fill='both', padx=10, pady=30)
 
     #create widgets to be added to the canvasFame
-    self.canvas = tb.Canvas(self.canvasFrame, width=50, height=20,autostyle=False ,bg="#FFFFFF", relief='solid')
+    self.canvas = tb.Canvas(self.canvasFrame, width=20, height=10,autostyle=False ,bg="#FFFFFF", relief='flat')
 
     #add created widgets to canvasFame
     self.canvas.pack(side='left', expand=True, fill='both')
@@ -49,8 +49,8 @@ class VisualizeImuFrame(tb.Frame):
     # initialize canvas
     
     # add displayFrame and canvasFrame to GraphFrame
-    self.displayFrame.pack(side='top', expand=True, fill='x', padx=10)
-    self.canvasFrame.pack(side='top', expand=True, fill='both', pady=(10,0))
+    self.displayFrame.pack(side='top', expand=True, fill='x', padx=10, pady=20)
+    self.canvasFrame.pack(side='top', expand=True, fill='both')
 
     ############################################
 
