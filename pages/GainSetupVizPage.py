@@ -8,7 +8,6 @@ from components.SetValueFrame import SetValueFrame
 from components.VisualizeImuFrame import VisualizeImuFrame
 
 
-
 class GainSetupVizFrame(tb.Frame):
   def __init__(self, parentFrame):
     super().__init__(master=parentFrame)
