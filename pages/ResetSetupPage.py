@@ -48,5 +48,5 @@ class ResetSetupFrame(tk.Frame):
 
 
   def resetAllParams(self):
-    isSuccessful = g.serClient.send("reset")
+    isSuccessful = g.serClient.send("/reset")
     return isSuccessful

@@ -20,7 +20,7 @@ class CalibrateGyro:
       count = 0
       while len(gyro_x) < HISTORY_SIZE:
           try:
-              gx, gy, gz = g.serClient.get("gyro-raw")
+              gx, gy, gz = g.serClient.get("/gyro-raw")
 
               gyro_x.append(gx)
               gyro_y.append(gy)
@@ -51,8 +51,8 @@ class CalibrateGyro:
       print(colored("computed gyro offsets in rad/s:", 'cyan'))
       print(gyro_calibration)
 
-      g.serClient.send('gyro-off', gx_offset, gy_offset, gz_offset)
-      gx_offset, gy_offset, gz_offset = g.serClient.get('gyro-off')
+      g.serClient.send('/gyro-off', gx_offset, gy_offset, gz_offset)
+      gx_offset, gy_offset, gz_offset = g.serClient.get('/gyro-off')
 
       gyro_calibration = [ gx_offset, gy_offset, gz_offset]
       print(colored("stored gyro offsets in rad/s:", 'green'))

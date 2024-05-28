@@ -18,7 +18,7 @@ class ComputeAccVar:
 
     for i in range(no_of_samples):
 
-      lin_accx, lin_accy, lin_accz = g.serClient.get('acc-cal')
+      lin_accx, lin_accy, lin_accz = g.serClient.get('/acc-cal')
       lin_accx_arr.append(lin_accx)
       lin_accy_arr.append(lin_accy)
       lin_accz_arr.append(lin_accz)
@@ -37,8 +37,8 @@ class ComputeAccVar:
     print(colored("computed acc variances:", 'cyan'))
     print(lin_acc_variance)
 
-    g.serClient.send('acc-var', lin_accx_variance, lin_accy_variance, lin_accz_variance)
-    lin_accx_variance, lin_accy_variance, lin_accz_variance = g.serClient.get('acc-var')
+    g.serClient.send('/acc-var', lin_accx_variance, lin_accy_variance, lin_accz_variance)
+    lin_accx_variance, lin_accy_variance, lin_accz_variance = g.serClient.get('/acc-var')
 
     lin_acc_variance = [ lin_accx_variance, lin_accy_variance, lin_accz_variance]
     print(colored("stored acc variances", 'green'))

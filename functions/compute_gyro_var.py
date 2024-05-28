@@ -17,7 +17,7 @@ class ComputeGyroVar:
     yaw_rate_arr = []
 
     for i in range(no_of_samples):
-      r_rate, p_rate, y_rate = g.serClient.get('gyro-cal')
+      r_rate, p_rate, y_rate = g.serClient.get('/gyro-cal')
       roll_rate_arr.append(r_rate)
       pitch_rate_arr.append(p_rate)
       yaw_rate_arr.append(y_rate)
@@ -38,8 +38,8 @@ class ComputeGyroVar:
     print(colored("computed gyro variances:", 'cyan'))
     print(gyro_variance)
 
-    g.serClient.send('gyro-var', roll_rate_variance, pitch_rate_variance, yaw_rate_variance)
-    roll_rate_variance, pitch_rate_variance, yaw_rate_variance = g.serClient.get('gyro-var')
+    g.serClient.send('/gyro-var', roll_rate_variance, pitch_rate_variance, yaw_rate_variance)
+    roll_rate_variance, pitch_rate_variance, yaw_rate_variance = g.serClient.get('/gyro-var')
 
     gyro_variance = [ roll_rate_variance, pitch_rate_variance, yaw_rate_variance]
     print(colored("stored gyro variances", 'green'))

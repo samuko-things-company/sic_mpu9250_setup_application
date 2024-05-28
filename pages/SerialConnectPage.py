@@ -72,7 +72,7 @@ class SerialConnectFrame(tb.Frame):
     try:
       g.serClient = SIC(name)
       time.sleep(10)
-      data = g.serClient.get("gain")
+      data = g.serClient.get("/gain")
       # print(data)
       return True
     except:
