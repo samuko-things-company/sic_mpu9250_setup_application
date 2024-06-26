@@ -72,7 +72,7 @@ class SerialConnectFrame(tb.Frame):
     try:
       g.serClient = SIC(name)
       time.sleep(10)
-      data = g.serClient.get("/gain")
+      data = g.serClient.get(g.GAIN_COMM_ADDRESS)
       # print(data)
       return True
     except:
@@ -89,6 +89,7 @@ class SerialConnectFrame(tb.Frame):
   def connect_serial_func(self):
     port = self.selectPort.getSelectedVal()
     serIsConnected = self.connectToPort(port)
+    print(serIsConnected)
     if serIsConnected:
       # print("connection successful")
       Messagebox.show_info(f"SUCCESS:\n\nSIC_MPU9250 module found on port: {port}\n\nclick OK to continue", "SUCCESS")

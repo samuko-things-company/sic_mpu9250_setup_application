@@ -17,7 +17,7 @@ class ComputeAngleVar:
     yaw_arr = []
 
     for i in range(no_of_samples):
-      r_rad, p_rad, y_rad = g.serClient.get('/rpy')
+      r_rad, p_rad, y_rad = g.serClient.get(g.RPY_COMM_ADDRESS)
       roll_arr.append(r_rad)
       pitch_arr.append(p_rad)
       yaw_arr.append(y_rad)
@@ -36,8 +36,8 @@ class ComputeAngleVar:
     print(colored("computed rpy variances:", 'cyan'))
     print(rpy_variance)
 
-    g.serClient.send('/rpy-var', roll_variance, pitch_variance, yaw_variance)
-    roll_variance, pitch_variance, yaw_variance = g.serClient.get('/rpy-var')
+    g.serClient.send(g.RPY_VAR_COMM_ADDRESS, roll_variance, pitch_variance, yaw_variance)
+    roll_variance, pitch_variance, yaw_variance = g.serClient.get(g.RPY_VAR_COMM_ADDRESS)
 
     rpy_variance = [ roll_variance, pitch_variance, yaw_variance]
     print(colored("stored rpy variances", 'green'))

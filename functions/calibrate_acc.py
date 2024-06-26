@@ -28,7 +28,7 @@ class CalibrateAcc:
       count = 0
       while len(acc_x) < HISTORY_SIZE:
           try:
-              ax, ay, az = g.serClient.get("/acc-raw")
+              ax, ay, az = g.serClient.get(g.ACC_RAW_COMM_ADDRESS)
 
               acc_x.append(ax)
               acc_y.append(ay)
@@ -51,8 +51,8 @@ class CalibrateAcc:
       print(colored("computed acc offsets in m/s^2::", 'cyan'))
       print(acc_calibration)
 
-      g.serClient.send('/acc-off', ax_offset, ay_offset, az_offset)
-      ax_offset, ay_offset, az_offset = g.serClient.get('/acc-off')
+      g.serClient.send(g.ACC_OFFSET_COMM_ADDRESS, ax_offset, ay_offset, az_offset)
+      ax_offset, ay_offset, az_offset = g.serClient.get(g.ACC_OFFSET_COMM_ADDRESS)
 
       acc_calibration = [ ax_offset, ay_offset, az_offset ]
       print(colored("stored acc offsets in m/s^2:", 'green'))

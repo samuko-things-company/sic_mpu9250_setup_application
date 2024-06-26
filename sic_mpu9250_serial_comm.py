@@ -22,8 +22,8 @@ class SIC:
     return data
 
   
-  def send(self, cmd_route, val1=0.0, val2=0.0, val3=0.0):
-    cmd_str = cmd_route+","+str(val1)+","+str(val2)+","+str(val3)
+  def send(self, address, val1=0.0, val2=0.0, val3=0.0):
+    cmd_str = str(address)+","+str(val1)+","+str(val2)+","+str(val3)
     data = self.send_msg(cmd_str)
     if data == "1":
       return True
@@ -31,8 +31,8 @@ class SIC:
       return False
   
   
-  def get(self, cmd_route):
-    data = self.send_msg(cmd_route).split(',')
+  def get(self, address):
+    data = self.send_msg(str(address)).split(',')
     if len(data)==1:
       return float(data[0])
     elif len(data)==3:

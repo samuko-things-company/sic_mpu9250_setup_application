@@ -55,14 +55,21 @@ class CalibrateMag:
       A_mat = [[0.0, 0.0, 0.0],[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
 
       time.sleep(0.1)
-      g.serClient.send('/bvect', self.b[0][0], self.b[1][0], self.b[2][0])
-      b_vect[0][0], b_vect[1][0], b_vect[2][0] = g.serClient.get('/bvect')
+      g.serClient.send(g.B_VECT_COMM_ADDRESS, self.b[0][0], self.b[1][0], self.b[2][0])
+      b_vect[0][0], b_vect[1][0], b_vect[2][0] = g.serClient.get(g.B_VECT_COMM_ADDRESS)
       time.sleep(0.05)
       
-      for i in range(3):
-        g.serClient.send(f'/amatR{i}', self.A_1[i][0], self.A_1[i][1], self.A_1[i][2])
-        A_mat[i][0], A_mat[i][1], A_mat[i][2] = g.serClient.get(f'/amatR{i}')
-        time.sleep(0.05)
+      g.serClient.send(g.A_MAT_0_COMM_ADDRESS, self.A_1[0][0], self.A_1[0][1], self.A_1[0][2])
+      A_mat[0][0], A_mat[0][1], A_mat[0][2] = g.serClient.get(g.A_MAT_0_COMM_ADDRESS)
+      time.sleep(0.05)
+
+      g.serClient.send(g.A_MAT_1_COMM_ADDRESS, self.A_1[1][0], self.A_1[1][1], self.A_1[1][2])
+      A_mat[1][0], A_mat[1][1], A_mat[1][2] = g.serClient.get(g.A_MAT_1_COMM_ADDRESS)
+      time.sleep(0.05)
+
+      g.serClient.send(g.A_MAT_2_COMM_ADDRESS, self.A_1[2][0], self.A_1[2][1], self.A_1[2][2])
+      A_mat[2][0], A_mat[2][1], A_mat[2][2] = g.serClient.get(g.A_MAT_2_COMM_ADDRESS)
+      time.sleep(0.05)
 
       ################################################
       
@@ -168,9 +175,9 @@ class CalibrateMag:
   def animate(self,i):
       try:
           if self.calibrated == False:
-              mx, my, mz = g.serClient.get("/mag-raw")
+              mx, my, mz = g.serClient.get(g.MAG_RAW_COMM_ADDRESS)
           else:
-              mx, my, mz = g.serClient.get("/mag-cal")
+              mx, my, mz = g.serClient.get(g.MAG_CAL_COMM_ADDRESS)
           
           self.magArray.append([mx,my,mz])
           self.mag_x.append(mx)

@@ -17,7 +17,7 @@ class GainSetupVizFrame(tb.Frame):
     self.frame = tb.Frame(self)
 
     #create widgets to be added to frame
-    g.filterGain = g.serClient.get("/gain")
+    g.filterGain = g.serClient.get(g.GAIN_COMM_ADDRESS)
     self.setFilterGain = SetValueFrame(self.frame, keyTextInit="FILTER_GAIN: ", valTextInit=g.filterGain,
                                 middleware_func=self.setFilterGainFunc)
     self.vizImuFrame = VisualizeImuFrame(self.frame)
@@ -35,8 +35,8 @@ class GainSetupVizFrame(tb.Frame):
   def setFilterGainFunc(self, text):
     try:
       if text:
-        isSuccessful = g.serClient.send("/gain", float(text))
-        val = g.serClient.get("/gain")
+        isSuccessful = g.serClient.send(g.GAIN_COMM_ADDRESS, float(text))
+        val = g.serClient.get(g.GAIN_COMM_ADDRESS)
         g.filterGain = val
     except:
       pass

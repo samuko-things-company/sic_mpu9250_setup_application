@@ -89,7 +89,7 @@ class VisualizeImuFrame(tb.Frame):
 
   def vizualize_imu(self):
     try:
-      roll, pitch, yaw = g.serClient.get('/rpy')
+      roll, pitch, yaw = g.serClient.get(g.RPY_COMM_ADDRESS)
 
       ##### perform axis computations #####################
       up=np.array([0,0,1]) # (x,y,z)
