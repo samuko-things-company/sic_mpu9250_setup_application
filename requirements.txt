@@ -1,7 +1,8 @@
-pyserial==3.5
-typeguard==4.2.1
-ttkbootstrap==1.10.1
-matplotlib==3.5.1
-scipy==1.13.0
-termcolor==2.4.0
-vpython==7.6.4
+pyserial
+typeguard
+ttkbootstrap
+numpy
+matplotlib
+scipy
+termcolor
+vpython
