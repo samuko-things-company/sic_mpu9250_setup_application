@@ -4,7 +4,7 @@ from ttkbootstrap.constants import *
 from ttkbootstrap.dialogs import Messagebox
 
 import serial.tools.list_ports
-from sic_mpu9250_serial_comm import SIC
+from serial_comm_lib import SerialComm
 
 import time
 
@@ -70,7 +70,7 @@ class SerialConnectFrame(tb.Frame):
 
   def connectToPort(self, name):
     try:
-      g.serClient = SIC(name)
+      g.serClient = SerialComm(name)
       time.sleep(10)
       data = g.serClient.get("/gain")
       # print(data)
