@@ -6,3 +6,5 @@ class g():
 
   i2cAddress = None
   filterGain = None
+  frameId = None
+  frameList = ["NWU", "ENU", "NED"]

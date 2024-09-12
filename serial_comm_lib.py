@@ -21,8 +21,8 @@ class SerialComm:
     return data
 
   
-  def send(self, cmd_route, valA=0, valB=0):
-    cmd_str = cmd_route+","+str(valA)+","+str(valB)
+  def send(self, cmd_route, val1=0, val2=0, val3=0):
+    cmd_str = cmd_route+","+str(val1)+","+str(val2)+","+str(val3)
     data = self.send_msg(cmd_str)
     if data == "1":
       return True
@@ -32,8 +32,13 @@ class SerialComm:
   
   def get(self, cmd_route):
     data = self.send_msg(cmd_route).split(',')
-    if len(data)==2:
-      return float(data[0]), float(data[1])
-    elif len(data)==1:
+    # return float(data[0]), float(data[1]), float(data[2])
+    if len(data)==1:
       return float(data[0])
+    elif len(data)==2:
+      return float(data[0]), float(data[1])
+    elif len(data)==3:
+      return float(data[0]), float(data[1]), float(data[2])
+    elif len(data)==4:
+      return float(data[0]), float(data[1]), float(data[2]), float(data[3])
   

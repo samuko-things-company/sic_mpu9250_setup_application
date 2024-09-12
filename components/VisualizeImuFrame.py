@@ -59,29 +59,35 @@ class VisualizeImuFrame(tb.Frame):
     ##----------------------------------------------------------------##
     scene.range=5
     scene.forward=vector(-1,-1,-1)
-    scene.width=600
-    scene.height=600
+    scene.width=500
+    scene.height=500
 
-    self.xAxis = arrow(length=1.25, shaftwidth=.1, color=color.red,
-                  axis=vector(0,0,1)) # (y,z,x)
-    self.yAxis = arrow(length=1.25, shaftwidth=.1, color=color.green,
-                  axis=vector(1,0,0)) # (y,z,x)
-    self.zAxis = arrow(length=1.25, shaftwidth=.1, color=color.blue,
-                  axis=vector(0,1,0)) # (y,z,x)
-
-    self.xArrow = arrow(length=3, shaftwidth=.08, color=color.red,
-                  axis=vector(0,0,1), opacity=.3) # (y,z,x)
-    self.yArrow = arrow(length=3, shaftwidth=.08, color=color.green,
+    self.xAxis = arrow(length=1.25, shaftwidth=.08, color=color.red,
+                  axis=vector(0,0,1), opacity=1.0) # (y,z,x)
+    self.yAxis = arrow(length=1.25, shaftwidth=.08, color=color.green,
+                  axis=vector(1,0,0), opacity=1.0) # (y,z,x)
+    self.zAxis = arrow(length=1.25, shaftwidth=.08, color=color.blue,
+                  axis=vector(0,1,0), opacity=1.0) # (y,z,x)
+    
+    self.xArrow = arrow(length=3, shaftwidth=.1, color=color.red,
+                    axis=vector(0,0,1), opacity=.3) # (y,z,x)
+    self.yArrow = arrow(length=3, shaftwidth=.1, color=color.green,
                   axis=vector(1,0,0), opacity=.3) # (y,z,x)
-    self.zArrow = arrow(length=3, shaftwidth=.08, color=color.blue,
+    self.zArrow = arrow(length=3, shaftwidth=.1, color=color.blue,
                   axis=vector(0,1,0), opacity=.3) # (y,z,x)
-
+    
     self.myBox = box()
     self.myBox.length = 3.5
     self.myBox.width = 1.5
-    self.myBox.height = 0.25
+    self.myBox.height = 0.2
     self.myBox.opacity = 0.3 
 
+    g.frameId = int(g.serClient.get("/frame-id"))
+
+    if g.frameList[g.frameId] == "ENU":    
+      self.myBox.length = 1.5
+      self.myBox.width = 3.5
+    
     self.myObj = compound([self.myBox])
 
     self.vizualize_imu()

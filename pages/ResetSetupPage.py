@@ -37,14 +37,11 @@ class ResetSetupFrame(tk.Frame):
     if dialog == "Yes":
       isSuccessful = self.resetAllParams()
       if isSuccessful:
-        Messagebox.show_info("SUCCESS:\n\nParameters Reset was successful.\n\nRestart gui application\n\nReset controller with the reset button\nor turn off and on the controller", "SUCCESS")
-        print(colored("SUCCESS:\n\nParameters Reset was successful.\n\nRestart gui application\n\nReset controller with the reset button\nor turn off and on the controller", 'green'))
+        Messagebox.show_info("SUCCESS:\n\nParameters Reset was successful", "SUCCESS")
+        print(colored("SUCCESS:\n\nParameters Reset was successful", 'green'))
       else:
         Messagebox.show_error("ERROR:\n\nSomething went wrong\nAttempt to reset was unsuccessful\nTry again", "ERROR")
         print(colored("ERROR:\n\nSomething went wrong\nAttempt to reset was unsuccessful\nTry again", 'red'))
-
-    time.sleep(2.0)
-    exit()
 
 
   def resetAllParams(self):

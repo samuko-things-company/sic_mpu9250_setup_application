@@ -40,9 +40,22 @@ class CalibrateAcc:
           except:
               pass
 
-      ax_offset = self.average(acc_x)
-      ay_offset = self.average(acc_y)
-      az_offset = (self.average(acc_z) - 9.8)
+      g.frameId = int(g.serClient.get("/frame-id")) ## 0 - NWU,  1 - ENU,  2 - NED
+
+      if g.frameList[g.frameId] == "NWU":
+        ax_offset = self.average(acc_x)
+        ay_offset = self.average(acc_y)
+        az_offset = (self.average(acc_z) - 9.8)
+
+      elif g.frameList[g.frameId] == "ENU":
+        ax_offset = self.average(acc_x)
+        ay_offset = self.average(acc_y)
+        az_offset = (self.average(acc_z) - 9.8)
+      
+      elif g.frameList[g.frameId] == "NED":
+        ax_offset = self.average(acc_x)
+        ay_offset = self.average(acc_y)
+        az_offset = (self.average(acc_z) + 9.8)
 
 
 
