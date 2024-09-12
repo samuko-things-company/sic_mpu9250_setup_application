@@ -71,7 +71,7 @@ class SerialConnectFrame(tb.Frame):
   def connectToPort(self, name):
     try:
       g.serClient = SerialComm(name)
-      time.sleep(5)
+      time.sleep(6)
       data = g.serClient.get("/gain")
       # print(data)
       return True
